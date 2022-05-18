@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Header } from './components/Header.jsx';
+import { Footer } from './components/Footer.jsx';
+import { Body } from './components/Body.jsx';
+import { Login } from './components/Login.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DRegister } from './components/DRegister.jsx';
+import {PRegister} from "./components/PRegister.jsx";
+import { Dashboard } from './components/Dashboard.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Body />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/docregister' element={<DRegister />} />
+          <Route exact path='/patregister' element={<PRegister />} />
+          <Route exact path='/dashboard' element={<Dashboard />} />
+        </Routes>
+      </Router>
+      <Footer />
+    </>
   );
 }
 
